@@ -2,9 +2,6 @@ typedef int ElementType;
 typedef struct GNode * GList;
 typedef struct location * Location;
 
-
-
-
 struct GNode {
 	int Tag;//0 mean Head,1 mean Term
 	GList Down;
@@ -37,6 +34,8 @@ struct location
 
 GList Init_list();
 int Add_element(GList L, int Row, int Col, ElementType X);
-int My_printf(GList L);
+int my_printf_matrix(GList L);
 int Matrix_save(GList L);
+Location Find(GList L);
+int my_printf_local(Location local_list);
 #pragma once

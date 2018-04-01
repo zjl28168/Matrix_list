@@ -8,23 +8,24 @@
 void main()
 {
 	GList L;
+	Location local_list;
 	L = Init_list();
 	ElementType X;
 	int Row, Col;
 	int i, j, k;
 	int Chose;
-	i = 19;
-	//printf("Glist=%d\n", sizeof(GList));
-	//printf("struct GNode = %d \n", sizeof(struct GNode));
+	printf("Input the number of your matrix want to input:\n");
+	scanf("%d", &i);
 	while (i--)
 	{
 		printf("Input your element,like this Row,Col,Value:\n");
 		scanf("%d,%d,%d", &Row, &Col, &X);
 		Add_element(L, Row, Col, X);
 		Matrix_save(L);
-		My_printf(L);
+		my_printf_matrix(L);
 	}
-	system("pause");
-	//My_printf(L);
+	local_list = Find(L);
+	my_printf_local(local_list);
+	system("pause");	
 }
 

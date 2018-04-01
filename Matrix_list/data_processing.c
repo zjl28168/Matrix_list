@@ -217,57 +217,61 @@ int Add_element(GList L,int Row,int Col,ElementType X)
 Location Add_location()
 {
 	Location List;
-	List = (Location)malloc(sizeof(Location));
+	List = (Location)malloc(sizeof(struct location));
 	if (List == NULL) {
 		printf("Failed to creat Location list!\n");
 		return NULL;
 	}
-	memset(List, 0, sizeof(Location));	
+	memset(List, 0, sizeof(struct location));
 	return List;
 }
 
 
 /*查找*/
-Location Find(GList L, ElementType X)
+Location Find(GList L)
 {
+	int x;
 	GList L0,L_down;
 	Location List_local,List_local_0;//定位指针链表
-	//int row, col;
-	//int i, j,k;	
-	List_local_0 = List_local = Add_location();	
-	if (L->Down == 0 | L->Right == 0) {
-		printf("This is an empty matrix!\n ");
-		//return ;
-	}
+	List_local_0 = List_local = Add_location();
+	if (L->Down == 0 | L->Right == 0)
+		{
+		printf("This is an empty matrix!\n ");	
+		free(List_local);
+		}	
 	else
-	{
-
+		{	
+		printf("Enter the element you want to find:\n ");
+		scanf("%d", &x); 
 		L0 = L;
 		L_down = L->Down;//记录第一行
 		L = L->Down;//	指向第一行
-
 		while ( L!=L0)
-		{
+			{
 			L = L->Right;//指向第一个数据
-			while (L != L_down){
-				if (L->URegion.Element.Value == X) {			
+			while (L != L_down)
+				{
+				if (L->URegion.Element.Value == x)
+					{			
 					List_local->Next = Add_location();
 					List_local = List_local->Next;
 					List_local_0->Sum++;
 					List_local->Row = L->URegion.Element.Row;
 					List_local->Col = L->URegion.Element.Col;
+					}
+				L = L->Right;//go to next element
 				}
-				L = L_down->Down;//指向下一行
-			}
-		}
+			L = L_down->Down;
+			L_down = L_down->Down;
+			 }
 		return List_local_0;
-	}
+	    }
 	
 }
 
 
 /*打印*/
-int My_printf(GList L)
+int my_printf_matrix(GList L)
 {
 	GList L0,L_Down;
 	int Zero = 0;
@@ -297,7 +301,25 @@ int My_printf(GList L)
 			for(j=0;j<Col;j++)
 				printf("%5d\t", Zero);
 		}
-
 		printf("\n");
 	}
 }
+
+int my_printf_local(Location local_list)
+	{
+	//int x;
+	local_list = local_list->Next;
+	if (NULL == local_list)
+	{
+		printf("There is no the num.\n");
+	}
+	else
+	{
+		printf("Your find num is located:\n");
+		while (local_list != NULL)
+		{
+			printf("(%d,%d)", local_list->Row, local_list->Col);
+			local_list = local_list->Next;
+		}
+	}
+	}
