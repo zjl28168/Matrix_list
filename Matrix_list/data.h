@@ -14,7 +14,7 @@ struct GNode {
 			int Col;
 			ElementType Value;
 		}Element;
-		GList Next;
+		//GList Next;
 	}URegion;
 	GList Right;
 }; //元素结构体
@@ -35,6 +35,8 @@ struct location
 	Location Next;	
 };//位置指针
 
-int Add_element(GList L, int Row, int Col, ElementType X);
 GList Init_list();
+int Add_element(GList L, int Row, int Col, ElementType X);
+int My_printf(GList L);
+int Matrix_save(GList L);
 #pragma once
