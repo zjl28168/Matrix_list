@@ -34,6 +34,7 @@ struct location
 
 GList Init_list();
 int data_add(GList L, int Row, int Col, ElementType X);
+int data_delete(GList L, int Row, int Col);
 int my_printf_matrix(GList L);
 int Matrix_save(GList L);
 Location Find(GList L);

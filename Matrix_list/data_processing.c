@@ -212,6 +212,14 @@ int data_add(GList L,int Row,int Col,ElementType X)
         }
     }
 
+
+/*Delet the num in the matrix*/
+int data_delete(GList L, int Row, int Col)
+    {
+
+    }
+
+
 Location Add_location()
     {
      Location List;
